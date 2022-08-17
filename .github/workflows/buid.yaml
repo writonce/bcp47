@@ -26,22 +26,21 @@ jobs:
     - uses: actions/checkout@v2
     
     # Setup Go
-    - name: Setup Go
-      uses: actions/setup-go@v2
+    - uses: actions/setup-go@v3
+      with:
+        go-version: 1.19
     
     # Install all the dependencies
     - name: Install dependencies
       run: |
         go version
-        go get -u golang.org/x/lint/golint
         go get -u golang.org/x/text/language
         
     # Run build of the application
     - name: Run build
-      run: go build . 
-      
-    # Run vet & lint on the code
-    - name: Run vet & lint
-      run: |
-        go vet .
-        golint .
+      run: go build .       
+
+    - name: golangci-lint
+      uses: golangci/golangci-lint-action@v3
+      with:
+        version: latest       
