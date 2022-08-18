@@ -22,7 +22,7 @@ func TestCheckBCP47(T *testing.T) {
     }
     for _, tc := range cases {
         flag.CommandLine = flag.NewFlagSet(tc.Name, flag.ExitOnError)
-        os.Args = append([]string{tc.Args})
+        os.Args = []string{tc.Args}
         var buf bytes.Buffer
         actualExit := checkBCP47(&buf)
         if tc.ExpectedExit != actualExit {
