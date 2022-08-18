@@ -7,11 +7,16 @@ import (
 )
 
 func main() {
+   os.checkBCP47(realMain(os.Stdout))
+}
+
+func checkBCP47(out io.Writer) int {
    if len(os.Args) != 1 {
-      fmt.Printf("Missing language code\n")
-      os.Exit(1)
+      fmt.Fprintf(out,"Missing language code\n")
+      return 1
    }
 
    tag := language.Make(os.Args[0])
-   fmt.Println(tag)
+   fmt.Fprintln(out,tag)
+   return 0
 }
