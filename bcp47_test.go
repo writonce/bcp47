@@ -18,7 +18,7 @@ func TestCheckBCP47(T *testing.T) {
         {"ok1", "fr-fr", 0, "fr-FR\n"},
         {"ok2", "fr-FR", 0, "fr-FR\n"},
         {"ok3", "FR-FR", 0, "fr-FR\n"},
-        {"ko1", nil, 1, "Missing language code\n"},
+        {"ko1", "", 1, "Missing language code\n"},
     }
     for _, tc := range cases {
         flag.CommandLine = flag.NewFlagSet(tc.Name, flag.ExitOnError)

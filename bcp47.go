@@ -12,7 +12,7 @@ func main() {
 }
 
 func checkBCP47(out io.Writer) int {
-   if len(os.Args) != 1 {
+   if len(os.Args) != 1 || (len(os.Args) == 1 && os.Args[0] == "") {
       fmt.Fprintf(out,"Missing language code\n")
       return 1
    }
