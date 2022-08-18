@@ -11,7 +11,7 @@ func TestCheckBCP47(T *testing.T) {
     defer func() { os.Args = oldArgs }()
     cases := []struct {
         Name           string
-        Args           []string
+        Args           string
         ExpectedExit   int
         ExpectedOutput string
     }{
