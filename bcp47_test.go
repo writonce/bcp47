@@ -15,9 +15,9 @@ func TestCheckBCP47(T *testing.T) {
         ExpectedExit   int
         ExpectedOutput string
     }{
-        {"ok1", "fr-fr", 0, "fr-FR"},
-        {"ok2", "fr-FR", 0, "fr-FR"},
-        {"ok3", "FR-FR", 0, "fr-FR"},
+        {"ok1", "fr-fr", 0, "fr-FR\n"},
+        {"ok2", "fr-FR", 0, "fr-FR\n"},
+        {"ok3", "FR-FR", 0, "fr-FR\n"},
         {"ko1", "", 1, "Missing language code\n"},
     }
     for _, tc := range cases {
