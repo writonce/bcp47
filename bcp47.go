@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-   os.checkBCP47(realMain(os.Stdout))
+   os.Exit(checkBCP47(os.Stdout))
 }
 
 func checkBCP47(out io.Writer) int {
