@@ -9,16 +9,14 @@ import (
 )
 
 func main() {
-   os.Exit(checkBCP47(os.Stdout))
+   if len(os.Args) != 1 {
+      fmt.Fprintf(out, "Missing language code\n")
+      os.Exit(1)
+   }
+   checkBCP47(os.Stdout)
 }
 
 func checkBCP47(out io.Writer) int {
-   name := flag.String("name", "", "Your Name")
-   flag.Parse()
-   if *name == "" {
-       fmt.Fprintf(out, "Missing flag -name\n")
-       return 1
-   }
-   fmt.Fprintf(out, language.Make(*name))
+   fmt.Fprintf(out, language.Make(os.Args[0]))
    return 0
 }
