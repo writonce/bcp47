@@ -19,6 +19,6 @@ func checkBCP47(out io.Writer) int {
        fmt.Fprintf(out, "Missing flag -name\n")
        return 1
    }
-   fmt.Fprintf(out, language.Make(name))
+   fmt.Fprintf(out, language.Make(*name))
    return 0
 }
