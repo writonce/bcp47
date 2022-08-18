@@ -8,7 +8,7 @@ import (
 
 func main() {
    if len(os.Args) != 1 {
-      fmt.printf("Missing language code\n")
+      fmt.Printf("Missing language code\n")
       os.Exit(1)
    }
 
