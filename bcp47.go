@@ -15,8 +15,7 @@ func checkBCP47(out io.Writer) int {
    argsWithoutProg := os.Args[1:]
    if len(argsWithoutProg) != 1 || (len(argsWithoutProg) == 1 && argsWithoutProg[0] == "") {
       fmt.Fprintln(out,"")
-   }
-   else {
+   } else {
       tag, err := language.Parse(argsWithoutProg[0])
 		if err != nil {
          fmt.Fprintln(out,"")
