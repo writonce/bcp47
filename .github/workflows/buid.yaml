@@ -30,7 +30,7 @@ jobs:
         go version
         go get -u golang.org/x/text/language
         
-    - run: go build . -o bcp47   
+    - run: go build -o bcp47 .    
 
     - uses: golangci/golangci-lint-action@v3
       with:
