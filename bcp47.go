@@ -19,8 +19,7 @@ func checkBCP47(out io.Writer) int {
       tag, err := language.Parse(argsWithoutProg[0])
 		if err != nil {
          fmt.Fprintln(out,"")
-      }
-      else {
+      }  else {
          fmt.Fprintln(out,tag)
       }
    }
