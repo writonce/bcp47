@@ -30,7 +30,7 @@ jobs:
         go version
         go get -u golang.org/x/text/language
         
-    - run: go build .       
+    - run: go build . -o bcp47   
 
     - uses: golangci/golangci-lint-action@v3
       with:
@@ -38,4 +38,9 @@ jobs:
         skip-pkg-cache: true
         skip-build-cache: true
 
-    - run: go test -v .    
+    - run: go test -v .
+
+    - uses: actions/upload-artifact@v2
+        with:
+          name: bcp47
+          path: bcp47
