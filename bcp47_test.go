@@ -11,18 +11,18 @@ func TestCheckBCP47(T *testing.T) {
     defer func() { os.Args = oldArgs }()
     cases := []struct {
         Name           string
-        Args           string
+        Args           []string
         ExpectedExit   int
         ExpectedOutput string
     }{
-        {"ok1", "fr-fr", 0, "fr-FR\n"},
-        {"ok2", "fr-FR", 0, "fr-FR\n"},
-        {"ok3", "FR-FR", 0, "fr-FR\n"},
-        {"ko1", "", 1, "Missing language code\n"},
+        {"ok1", []string{"fr-fr"}, 0, "fr-FR\n"},
+        {"ok2", []string{"fr-FR"}, 0, "fr-FR\n"},
+        {"ok3", []string{"FR-FR"}, 0, "fr-FR\n"},
+        {"ko1", []string{""}, 1, "Missing language code\n"},
     }
     for _, tc := range cases {
         flag.CommandLine = flag.NewFlagSet(tc.Name, flag.ExitOnError)
-        os.Args = []string{tc.Args}
+        os.Args = append([]string{tc.Name}, tc.Args...)
         var buf bytes.Buffer
         actualExit := checkBCP47(&buf)
         if tc.ExpectedExit != actualExit {

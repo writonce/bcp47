@@ -12,12 +12,13 @@ func main() {
 }
 
 func checkBCP47(out io.Writer) int {
-   if len(os.Args) != 1 || (len(os.Args) == 1 && os.Args[0] == "") {
+   argsWithoutProg := os.Args[1:]
+   if len(argsWithoutProg) != 1 || (len(argsWithoutProg) == 1 && argsWithoutProg[0] == "") {
       fmt.Fprintf(out,"Missing language code\n")
       return 1
    }
 
-   tag := language.Make(os.Args[0])
+   tag := language.Make(argsWithoutProg[0])
    fmt.Fprintln(out,tag)
    return 0
 }
