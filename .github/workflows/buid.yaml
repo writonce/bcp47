@@ -28,6 +28,7 @@ jobs:
     - name: Install dependencies
       run: |
         go mod download
+        cat go.sum
         
     - run: go build -o bcp47 .    
 
