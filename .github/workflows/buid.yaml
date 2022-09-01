@@ -1,0 +1,46 @@
+name: CICD
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches:
+    - master
+    - staging
+    - develop
+  pull_request:
+    branches:
+    - master
+    - staging
+    - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - uses: actions/setup-go@v3
+      with:
+        go-version-file: go.mod
+    
+    - name: Install dependencies
+      run: |
+        go version
+        go get -u golang.org/x/text/language
+        
+    - run: go build -o bcp47 .    
+
+    - uses: golangci/golangci-lint-action@v3
+      with:
+        version: latest
+        skip-pkg-cache: true
+        skip-build-cache: true
+
+    - run: go test -v .
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: bcp47
+        path: bcp47
