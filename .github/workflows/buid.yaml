@@ -27,8 +27,9 @@ jobs:
     
     - name: Install dependencies
       run: |
-        go mod download
-       
+        go version
+        go get -u golang.org/x/text/language
+        
     - run: go build -o bcp47 .    
 
     - uses: golangci/golangci-lint-action@v3
