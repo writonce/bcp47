@@ -18,7 +18,7 @@ func TestCheckBCP47(T *testing.T) {
         {"ok1", []string{"fr-fr"}, 0, "fr-FR\n"},
         {"ok2", []string{"fr-FR"}, 0, "fr-FR\n"},
         {"ok3", []string{"FR-FR"}, 0, "fr-FR\n"},
-        {"ko1", []string{""}, 0, "\n"},
+        {"ko1", []string{""}, 1, "Need 1 language code as argument\n"},
         {"ko2", []string{"dfsdgdsgdf"}, 0, "\n"},
     }
     for _, tc := range cases {
