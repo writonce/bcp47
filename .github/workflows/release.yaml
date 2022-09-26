@@ -22,3 +22,5 @@ jobs:
         pre_command: go get -u golang.org/x/text/language
         goversion: 1.19
         binary_name: bcp47
+        asset_name: bcp47-${{ matrix.goos }}-${{ matrix.goarch }}
+        compress_assets: OFF
