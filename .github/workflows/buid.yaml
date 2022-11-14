@@ -25,11 +25,11 @@ jobs:
       with:
         go-version-file: go.mod
     
-    - name: Install dependencies
-      run: |
-        go version
-        go get -u golang.org/x/text/language
-        cat go.mod
+#    - name: Install dependencies
+#      run: |
+#        go version
+#        go get -u golang.org/x/text/language
+#        cat go.mod
         
     - run: go build -o bcp47 .    
 
