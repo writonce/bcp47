@@ -28,8 +28,9 @@ jobs:
 #    - name: Install dependencies
 #      run: |
 #        go version
+#        go mod tidy
 #        go get -u golang.org/x/text/language
-#        cat go.mod
+#        cat go.mod go.sum
         
     - run: go build -o bcp47 .    
 
