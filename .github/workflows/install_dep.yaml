@@ -1,0 +1,32 @@
+name: Install dependencies
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    
+    - uses: actions/setup-go@v3
+      with:
+        go-version-file: go.mod
+    
+    - name: Install dependencies
+      run: |
+        go version
+        go mod tidy
+        cat go.mod go.sum
+
+    - name: Commit mod files
+      continue-on-error: true
+      run: |
+        git config --global user.name 'bcp47'
+        git config --global user.email 'bcp47@users.noreply.github.com'
+        git pull
+        git add  go.mod go.sum
+        git commit -am "update dependencies"
+        git push
+
