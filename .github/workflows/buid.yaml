@@ -24,14 +24,7 @@ jobs:
     - uses: actions/setup-go@v3
       with:
         go-version-file: go.mod
-    
-#    - name: Install dependencies
-#      run: |
-#        go version
-#        go mod tidy
-#        go get -u golang.org/x/text/language
-#        cat go.mod go.sum
-        
+           
     - run: go build -o bcp47 .    
 
     - uses: golangci/golangci-lint-action@v3
